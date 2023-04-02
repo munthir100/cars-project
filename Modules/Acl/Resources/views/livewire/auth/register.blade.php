@@ -2,11 +2,15 @@
     <form class="auth-register-form mt-2" action="index.html" method="POST">
         <div class="mb-1">
             <label for="register-username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="register-username" name="register-username" placeholder="johndoe" aria-describedby="register-username" tabindex="1" autofocus />
+            <input type="text" class="form-control" id="register-username" name="name" placeholder="johndoe" aria-describedby="register-username" tabindex="1" autofocus />
         </div>
         <div class="mb-1">
             <label for="register-email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="register-email" name="register-email" placeholder="john@example.com" aria-describedby="register-email" tabindex="2" />
+            <input type="text" class="form-control" id="register-email" name="email" placeholder="john@example.com" aria-describedby="register-email" tabindex="2" />
+        </div>
+        <div class="mb-1">
+            <label for="register-email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="register-email" name="phone" placeholder="john@example.com" aria-describedby="register-email" tabindex="2" />
         </div>
 
         <div class="mb-1">

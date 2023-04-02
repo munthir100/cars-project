@@ -13,12 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('car_id')->references('id')->on('cars')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('address')->nullable();
+
+            $table->foreignId('client_id')
+                ->references('id')
+                ->on('clients')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('locations');
     }
 };

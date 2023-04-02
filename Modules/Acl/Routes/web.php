@@ -17,6 +17,8 @@ use Modules\Acl\Http\Controllers\AuthController;
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::get('forgetPassword', [AuthController::class, 'forgetPassword'])->name('password.forget');
+Route::get('resetPassword', [AuthController::class, 'resetPassword'])->name('password.reset');
 Route::post('/logout', function () {
     Auth::logout();
     return to_route('login');

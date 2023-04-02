@@ -45,12 +45,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Clients</h4>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClient">add client</button>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                these information about clients
-                            </p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClient">Add Client</button>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
@@ -71,7 +66,7 @@
                                         <td>{{$client->user->name}}</td>
                                         <td>{{$client->user->email}}</td>
                                         <td>{{$client->user->phone}}</td>
-                                        <td>{{$client->address}}</td>
+                                        <td>{{$client->location->address}}</td>
                                         <td>{{$client->car->name}}</td>
                                         <td>
                                             <div class="dropdown">
@@ -120,9 +115,19 @@
                 <h4 class="modal-title" id="addClientLabel">Add Client</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div id="map" style="height: 270px;"></div>
             <livewire:dashboard::add-client />
         </div>
     </div>
 </div>
 <!-- Basic trigger modal end -->
+@endsection
+@section('styles')
+
+<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/maps/leaflet.min.css">
+<link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/plugins/maps/map-leaflet.css">
+@endsection
+@section('scripts')
+<script src="../../../app-assets/vendors/js/maps/leaflet.min.js"></script>
+<script src="../../../app-assets/js/scripts/maps/map-leaflet.js"></script>
 @endsection

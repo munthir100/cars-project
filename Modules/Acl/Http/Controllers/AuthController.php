@@ -8,10 +8,20 @@ use Illuminate\Routing\Controller;
 
 class AuthController extends Controller
 {
-    function login(){
+    function login()
+    {
         return view('acl::auth.login');
     }
-    function register(){
+    function register()
+    {
         return view('acl::auth.register');
+    }
+    function forgetPassword()
+    {
+        return view('acl::auth.forgetPassword');
+    }
+    function resetPassword()
+    {
+        return view('acl::auth.resetPassword');
     }
 }

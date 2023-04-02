@@ -16,7 +16,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::with('user')->get();
+        $clients = Client::with('user', 'car', 'location')->get();
 
         return view('dashboard::clients.index', compact('clients'));
     }
@@ -57,7 +57,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = Client::with('user', 'car')->find($id);
+        $client = Client::with('user', 'car','location')->find($id);
         return view('dashboard::clients.edit', compact('client'));
     }
 

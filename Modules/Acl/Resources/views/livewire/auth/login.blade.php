@@ -1,5 +1,6 @@
 <div>
     <livewire:alerts />
+    @error('credantials') <span class="text-danger">{{$message}}</span> @enderror
     <form wire:submit.prevent="login">
         @csrf
         <div class="mb-1">
@@ -10,7 +11,7 @@
         <div class="mb-1">
             <div class="d-flex justify-content-between">
                 <label class="form-label" for="login-password">Password</label>
-                <a href="auth-forgot-password-basic.html">
+                <a href="{{route('password.forget')}}">
                     <small>Forgot Password?</small>
                 </a>
             </div>

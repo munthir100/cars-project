@@ -41,16 +41,30 @@
             </div>
         </div>
         <div class="content-body">
+
             <!-- Basic Tables start -->
-            <livewire:client::edit-client :client="$client"/>
+            <div id="edit-map" style="height: 300px;"></div>
+            <livewire:client::edit-client :client="$client" />
+
             <!-- Basic Tables end -->
         </div>
     </div>
 </div>
+<div id="edit" data-latitude="{{ $client->location->latitude }}" data-longitude="{{ $client->location->longitude }}"></div>
+<div id="edit-map">
 
 <!-- Basic trigger modal -->
 
 <!-- Modal -->
 
 <!-- Basic trigger modal end -->
+@endsection
+@section('styles')
+
+<link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/maps/leaflet.min.css">
+<link rel="stylesheet" type="text/css" href="../../../app-assets/css-rtl/plugins/maps/map-leaflet.css">
+@endsection
+@section('scripts')
+<script src="../../../app-assets/vendors/js/maps/leaflet.min.js"></script>
+<script src="../../../app-assets/js/scripts/maps/map-leaflet.js"></script>
 @endsection

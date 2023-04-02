@@ -372,6 +372,8 @@
     <!-- BEGIN: Page JS-->
     <script src="../../../app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
     <!-- END: Page JS-->
+    @yield('scripts')
+    @yield('styles')
 
     <script>
         $(window).on('load', function() {

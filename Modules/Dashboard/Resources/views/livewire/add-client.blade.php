@@ -3,6 +3,7 @@
         <div class="modal-body">
             @csrf
             <div class="row">
+                @error('location') <span class="text-danger">{{$message}}</span>@enderror
                 <div class="col-md-6 col-12">
                     <div class="mb-1">
                         <label class="form-label" for="first-name-column">Name</label>
@@ -47,8 +48,14 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- Add the hidden fields for latitude and longitude -->
+        <input type="hidden" id="latitude" name="latitude" wire:model="latitude">
+        <input type="hidden" id="longitude" name="longitude" wire:model="longitude">
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
+
 </div>

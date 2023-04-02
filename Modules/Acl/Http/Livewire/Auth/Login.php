@@ -38,7 +38,8 @@ class Login extends Component
             Auth::login($user);
             return to_route('dashboard.index');
         } else {
-            return to_route('login')->with('error','invaild credantials');
+            $this->addError('credantials', 'Please Enter A Vaild Credantials');
+            return;
         }
     }
 }

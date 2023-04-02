@@ -4411,6 +4411,74 @@ $(function () {
     }).addTo(basicMap);
   }
 
+
+  if ($('#map').length) {
+    var mymap = L.map('map').setView([42.35, -71.08], 1);
+    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+      maxZoom: 18
+    }).addTo(mymap);
+    var marker = L.marker([51.5, -0.09], { draggable: true }).addTo(mymap);
+
+    marker.on('dragend', function (e) {
+      document.getElementById('latitude').value = marker.getLatLng().lat;
+      document.getElementById('longitude').value = marker.getLatLng().lng;
+      Livewire.emit('markerDragged', {
+        latitude: marker.getLatLng().lat,
+        longitude: marker.getLatLng().lng
+      });
+    });
+  }
+
+
+  if ($('#edit-map').length) {
+    var latitude = parseFloat($('#edit').data('latitude'));
+    var longitude = parseFloat($('#edit').data('longitude'));
+
+    var mymap = L.map('edit-map').setView([latitude, longitude], 10);
+    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+      maxZoom: 18
+    }).addTo(mymap);
+    var marker = L.marker([latitude, longitude], { draggable: true }).addTo(mymap);
+
+    marker.on('dragend', function (e) {
+      latitude = marker.getLatLng().lat;
+      longitude = marker.getLatLng().lng;
+      Livewire.emit('markerEdited', {
+        latitude: marker.getLatLng().lat,
+        longitude: marker.getLatLng().lng
+      });
+    });
+  }
+
+  // if ($('#edit-map').length) {
+  //   var mymap = L.map('edit-map').setView([42.35, -71.08], 1);
+  //   L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+  //     maxZoom: 18
+  //   }).addTo(mymap);
+  //   var marker = L.marker([51.5, -0.09], { draggable: 'true' }).addTo(mymap);
+  //   var dragBtn = L.easyButton('fa-arrows', function (btn, map) {
+  //     marker.dragging.enable();
+  //     marker.openPopup();
+  //   }, 'Enable Marker Dragging');
+  //   dragBtn.addTo(mymap);
+  //   marker.on('dragend', function (e) {
+  //     document.getElementById('latitude').value = marker.getLatLng().lat;
+  //     document.getElementById('longitude').value = marker.getLatLng().lng;
+  //     Livewire.emit('markerDragged', {
+  //       latitude: marker.getLatLng().lat,
+  //       longitude: marker.getLatLng().lng
+  //     });
+  //   });
+  // }
+
+
+
+
+
+
   // Markers
   // --------------------------------------------------------------------
   if ($('#shape-map').length) {
@@ -4526,18 +4594,18 @@ $(function () {
       return d > 1000
         ? '#800026'
         : d > 500
-        ? '#BD0026'
-        : d > 200
-        ? '#E31A1C'
-        : d > 100
-        ? '#FC4E2A'
-        : d > 50
-        ? '#FD8D3C'
-        : d > 20
-        ? '#FEB24C'
-        : d > 10
-        ? '#FED976'
-        : '#FFEDA0';
+          ? '#BD0026'
+          : d > 200
+            ? '#E31A1C'
+            : d > 100
+              ? '#FC4E2A'
+              : d > 50
+                ? '#FD8D3C'
+                : d > 20
+                  ? '#FEB24C'
+                  : d > 10
+                    ? '#FED976'
+                    : '#FFEDA0';
     }
 
     function style(feature) {
@@ -4568,9 +4636,9 @@ $(function () {
       golden = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
     var cities = L.layerGroup([littleton, denver, aurora, golden]);
     var street = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-        maxZoom: 18
-      }),
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+      maxZoom: 18
+    }),
       watercolor = L.tileLayer('http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
         maxZoom: 18
